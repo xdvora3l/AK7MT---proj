@@ -15,7 +15,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="620dp"
         android:gravity="center_horizontal|bottom"
         android:orientation="horizontal"
         android:padding="20dp">
@@ -34,9 +34,10 @@
             android:layout_centerHorizontal="true"
             android:text="Vycentrovat" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="356dp"
         android:gravity="center_horizontal|top"
         android:orientation="horizontal">
         <!-- Tlačítko pro zobrazení seznamu uložených lokací -->
@@ -46,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/buttonAdd"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="2dp"
             android:text="Zobrazit Seznam" />
     </LinearLayout>
 

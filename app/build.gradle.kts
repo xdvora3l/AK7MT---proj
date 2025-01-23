@@ -54,8 +54,8 @@ dependencies {
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
     implementation(libs.androidx.activity)
+    implementation(libs.androidx.core.splashscreen)
 
-    // KSP závislost pro Room nebo jinou knihovnu, která používá KSP
     ksp(libs.room.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
