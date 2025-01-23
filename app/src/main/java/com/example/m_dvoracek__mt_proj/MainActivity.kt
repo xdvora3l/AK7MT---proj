@@ -25,6 +25,7 @@ import org.osmdroid.events.ZoomEvent
 import com.example.m_dvoracek__mt_proj.data.Location
 import com.example.m_dvoracek__mt_proj.viewmodel.LocationViewModel
 import android.location.LocationManager
+import android.content.Intent
 
 
 class MainActivity : AppCompatActivity(), MapListener {
@@ -55,15 +56,30 @@ class MainActivity : AppCompatActivity(), MapListener {
             setupMap()
 
             addButton.setOnClickListener {
-                //val coordinates = getCurrentLocation()
-                val location = Location(latitude = myLocationOverlay.myLocation.latitude, longitude = myLocationOverlay.myLocation.longitude) // Příklad lokace
-                locationViewModel.addLocation(location) // Uložení do databáze
-                Toast.makeText(this, "Lokace uložena!", Toast.LENGTH_SHORT).show()
+                val currentLocation = myLocationOverlay.myLocation
+                if (currentLocation != null) {
+                    val location = Location(
+                        latitude = myLocationOverlay.myLocation.latitude,
+                        longitude = myLocationOverlay.myLocation.longitude
+                    )
+                    locationViewModel.addLocation(location)
+
+                    Toast.makeText(this, "Lokace uložena!", Toast.LENGTH_SHORT).show()
+                }
+                else{
+                    Toast.makeText(this, "Lokace není dostupná!", Toast.LENGTH_SHORT).show()
+                }
+
             }
 
             centerButton.setOnClickListener {
                 controller.setCenter(myLocationOverlay.myLocation)  // Nastavíme mapu na aktuální polohu
                 controller.animateTo(myLocationOverlay.myLocation)
+            }
+
+            showListButton.setOnClickListener {
+                val intent = Intent(this, ListActivity::class.java)
+                startActivity(intent)
             }
         }
     }

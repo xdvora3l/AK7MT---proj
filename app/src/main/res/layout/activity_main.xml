@@ -3,43 +3,51 @@
     android:id="@+id/activity_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="horizontal">
+
 
     <!-- MapView pro zobrazení mapy -->
     <org.osmdroid.views.MapView
         android:id="@+id/mapview"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="match_parent"
         android:gravity="center_horizontal|bottom"
+        android:orientation="horizontal"
         android:padding="20dp">
+
         <Button
             android:id="@+id/buttonAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Přidat Lokaci"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:text="Přidat Lokaci" />
 
         <Button
             android:id="@+id/buttonCenter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vycentrovat"
-            android:layout_centerHorizontal="true"/>
-
+            android:layout_centerHorizontal="true"
+            android:text="Vycentrovat" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal|top"
+        android:orientation="horizontal">
         <!-- Tlačítko pro zobrazení seznamu uložených lokací -->
         <Button
             android:id="@+id/buttonShowList"
-            android:layout_width="wrap_content"
+            android:layout_width="218dp"
             android:layout_height="wrap_content"
-            android:text="Zobrazit Seznam"
             android:layout_below="@id/buttonAdd"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:text="Zobrazit Seznam" />
     </LinearLayout>
 
 </RelativeLayout >

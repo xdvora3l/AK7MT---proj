@@ -16,6 +16,7 @@ navigationUiKtx = "2.6.0"
 osmdroid = "6.1.11"
 room = "2.6.1"
 ksp = "1.9.24-1.0.20"
+activity = "1.8.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -34,6 +35,7 @@ osmdroid = { group = "org.osmdroid", name = "osmdroid-android", version.ref = "o
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

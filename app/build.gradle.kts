@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.osmdroid)
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
+    implementation(libs.androidx.activity)
 
     // KSP závislost pro Room nebo jinou knihovnu, která používá KSP
     ksp(libs.room.compiler)
