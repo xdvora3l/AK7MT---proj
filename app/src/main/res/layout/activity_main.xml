@@ -11,21 +11,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <Button
-        android:id="@+id/buttonAdd"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Přidat Lokaci"
-        android:layout_centerHorizontal="true"/>
+        android:orientation="horizontal"
+        android:gravity="center_horizontal|bottom"
+        android:padding="20dp">
+        <Button
+            android:id="@+id/buttonAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Přidat Lokaci"
+            android:layout_centerHorizontal="true"/>
 
-    <!-- Tlačítko pro zobrazení seznamu uložených lokací -->
-    <Button
-        android:id="@+id/buttonShowList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Zobrazit Seznam"
-        android:layout_below="@id/buttonAdd"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"/>
+        <Button
+            android:id="@+id/buttonCenter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vycentrovat"
+            android:layout_centerHorizontal="true"/>
+
+        <!-- Tlačítko pro zobrazení seznamu uložených lokací -->
+        <Button
+            android:id="@+id/buttonShowList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Zobrazit Seznam"
+            android:layout_below="@id/buttonAdd"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"/>
+    </LinearLayout>
 
 </RelativeLayout >

@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity(), MapListener {
         setContentView(R.layout.activity_main)
 
         val addButton: Button = findViewById(R.id.buttonAdd)
+        val centerButton: Button = findViewById(R.id.buttonCenter)
         val showListButton: Button = findViewById(R.id.buttonShowList)
 
         mapView = findViewById(R.id.mapview)
@@ -54,10 +55,15 @@ class MainActivity : AppCompatActivity(), MapListener {
             setupMap()
 
             addButton.setOnClickListener {
-                val coordinates = getCurrentLocation()
-                val location = Location(latitude = coordinates!!.latitude, longitude =  coordinates!!.longitude) // Příklad lokace
+                //val coordinates = getCurrentLocation()
+                val location = Location(latitude = myLocationOverlay.myLocation.latitude, longitude = myLocationOverlay.myLocation.longitude) // Příklad lokace
                 locationViewModel.addLocation(location) // Uložení do databáze
                 Toast.makeText(this, "Lokace uložena!", Toast.LENGTH_SHORT).show()
+            }
+
+            centerButton.setOnClickListener {
+                controller.setCenter(myLocationOverlay.myLocation)  // Nastavíme mapu na aktuální polohu
+                controller.animateTo(myLocationOverlay.myLocation)
             }
         }
     }
