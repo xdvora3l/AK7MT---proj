@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/activity_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,17 +11,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawer_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+    <Button
+        android:id="@+id/buttonAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Přidat Lokaci"
+        android:layout_centerHorizontal="true"/>
 
-        <include
-            android:id="@+id/app_bar_main"
-            layout="@layout/app_bar_main"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+    <!-- Tlačítko pro zobrazení seznamu uložených lokací -->
+    <Button
+        android:id="@+id/buttonShowList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zobrazit Seznam"
+        android:layout_below="@id/buttonAdd"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
 
-    </androidx.drawerlayout.widget.DrawerLayout>
-</LinearLayout>
+</RelativeLayout >

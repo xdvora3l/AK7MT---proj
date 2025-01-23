@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.ksp)           // KSP plugin
 }
 
 android {
@@ -50,6 +51,11 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.osmdroid)
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+
+    // KSP závislost pro Room nebo jinou knihovnu, která používá KSP
+    ksp(libs.room.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

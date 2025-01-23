@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.graphics.Rect
 import android.os.Bundle
 import android.widget.Toast
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -12,6 +13,7 @@ import org.osmdroid.config.Configuration
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker
 import org.osmdroid.util.GeoPoint
+import androidx.activity.viewModels
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider
 import android.util.Log
@@ -20,21 +22,27 @@ import org.osmdroid.api.IMapController
 import org.osmdroid.events.MapListener
 import org.osmdroid.events.ScrollEvent
 import org.osmdroid.events.ZoomEvent
+import com.example.m_dvoracek__mt_proj.data.Location
+import com.example.m_dvoracek__mt_proj.viewmodel.LocationViewModel
+import android.location.LocationManager
+
 
 class MainActivity : AppCompatActivity(), MapListener {
 
     private lateinit var mapView: MapView
     private lateinit var controller: IMapController
     private lateinit var myLocationOverlay: MyLocationNewOverlay
+    private val locationViewModel: LocationViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Nastavení knihovny OSMDroid
         Configuration.getInstance().userAgentValue = packageName
 
         // Nastavení layoutu pro mapu
         setContentView(R.layout.activity_main)
+
+        val addButton: Button = findViewById(R.id.buttonAdd)
+        val showListButton: Button = findViewById(R.id.buttonShowList)
 
         mapView = findViewById(R.id.mapview)
 
@@ -44,7 +52,23 @@ class MainActivity : AppCompatActivity(), MapListener {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
         } else {
             setupMap()
+
+            addButton.setOnClickListener {
+                val coordinates = getCurrentLocation()
+                val location = Location(latitude = coordinates!!.latitude, longitude =  coordinates!!.longitude) // Příklad lokace
+                locationViewModel.addLocation(location) // Uložení do databáze
+                Toast.makeText(this, "Lokace uložena!", Toast.LENGTH_SHORT).show()
+            }
         }
+    }
+
+    private fun getCurrentLocation(): android.location.Location? {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            val locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
+            val provider = LocationManager.GPS_PROVIDER
+            return locationManager.getLastKnownLocation(provider)
+        }
+        else return null
     }
 
     private fun setupMap() {
